@@ -27,7 +27,7 @@ namespace DirectFerries.Business
         {
             var currentDate = DateTime.Now;
             var age = currentDate.Year - dateOfBirth.Year;
-            if (dateOfBirth.Month >= currentDate.Month && dateOfBirth.Day >= currentDate.Day)
+            if (dateOfBirth.Month > currentDate.Month && dateOfBirth.Day > currentDate.Day)
                 return age - 1;
             return age;
         }
