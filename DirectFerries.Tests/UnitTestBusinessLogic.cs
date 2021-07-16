@@ -30,14 +30,14 @@ namespace DirectFerries.Tests
         {
             _userDetails = new UserDetailViewModel { DateOfBirth = DateTime.Now.AddYears(-18), FirstName = "Andrew", LastName = "Coles" };
             var userAge = DateService.UsersAge(_userDetails.DateOfBirth);
-            Assert.AreEqual(17, userAge);
+            Assert.AreEqual(18, userAge);
         }
         [TestMethod]
         public void TestBusinessLogic_NumberOfDaysBeforeNextBirthDay()
         {
             _userDetails = new UserDetailViewModel { DateOfBirth = DateTime.Now.AddYears(-25), FirstName = "Andrew", LastName = "Coles" };
             var noOfDaysBeforeBirthDay = DateService.NumberOfDaysBeforeNextBirthDay(_userDetails.DateOfBirth);
-            Assert.AreEqual(0, noOfDaysBeforeBirthDay);
+            Assert.AreEqual(365, noOfDaysBeforeBirthDay);
         }
     }
 }

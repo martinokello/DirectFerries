@@ -39,9 +39,10 @@ namespace DirectFerries.Business
             float avgDaysInMonth = (float)daysPerYear / 12;
             var month = currentDate.Month;
             var bMonth = dateOfBirth.Month;
-            if (bMonth >= month)
-                return (int)(dateOfBirth.Day - currentDate.Day + (bMonth - month) * avgDaysInMonth);
-
+            if (bMonth > month)
+                return  (int)(dateOfBirth.Day - currentDate.Day + (bMonth - month) * avgDaysInMonth);
+            else if(bMonth == month && dateOfBirth.Day > currentDate.Day)
+                 return dateOfBirth.Day - currentDate.Day;
             return daysPerYear - (int)(dateOfBirth.Day - currentDate.Day + (month - bMonth) * avgDaysInMonth);
         }
         public char[] Vowels { get; set; }
