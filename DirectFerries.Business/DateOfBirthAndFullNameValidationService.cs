@@ -35,15 +35,15 @@ namespace DirectFerries.Business
         public int NumberOfDaysBeforeNextBirthDay(DateTime dateOfBirth)
         {
             var currentDate = DateTime.Now;
+            var daysPerYear = 365;
+            float avgDaysInMonth = (float)daysPerYear / 12;
             var month = currentDate.Month;
             var bMonth = dateOfBirth.Month;
-            if (bMonth >= month && dateOfBirth.Day>=currentDate.Day)
-                return dateOfBirth.Day - currentDate.Day;
-            var bithDateNextYear = currentDate.AddYears(1);
+            if (bMonth >= month)
+                return (int)(dateOfBirth.Day - currentDate.Day + (bMonth - month) * avgDaysInMonth);
 
-            return (bithDateNextYear - currentDate).Days;
+            return daysPerYear - (int)(dateOfBirth.Day - currentDate.Day + (month - bMonth) * avgDaysInMonth);
         }
-
         public char[] Vowels { get; set; }
     }
 }
