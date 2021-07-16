@@ -1,0 +1,5 @@
+C:\Development\DirectFerries\DirectFerries.Business\bin\Debug\DirectFerries.Business.dll
+C:\Development\DirectFerries\DirectFerries.Business\bin\Debug\DirectFerries.Business.pdb
+C:\Development\DirectFerries\DirectFerries.Business\obj\Debug\DirectFerries.Business.csproj.CoreCompileInputs.cache
+C:\Development\DirectFerries\DirectFerries.Business\obj\Debug\DirectFerries.Business.dll
+C:\Development\DirectFerries\DirectFerries.Business\obj\Debug\DirectFerries.Business.pdb

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Results Page";
+}
+
+<h2>Results Page</h2>
+
+<div class="container-fluid">
+    <h2>Hello @ViewBag.FirstName, Welcome to the Test Application.</h2>
+    <p>There are @ViewBag.NoOfVowels Vowels in your name!</p>
+    <p>You are @ViewBag.UserAge old! and have @ViewBag.NoOfDaysToNextBirthDay Days To your next Birthday.</p>
+</div>
+@if (ViewBag.DateIs14DaysToBD)
+{
+<div class="container">
+    <div class="row">
+        @for (int i = 1; i <= ViewBag.NoOfDaysToNextBirthDay ; i++)
+        {
+        <div class="col-lg-3" style="border:solid gray; border-radius:3px; padding:4px;">
+            @{
+                var currentDate = DateTime.Now;
+                var dateToBirthday = currentDate.AddDays(i);
+
+            }
+            <a href='@($"https://www.historynet.com/today-in-history/{dateToBirthday.ToString("MMMM")}-{dateToBirthday.Day}")'>@dateToBirthday.DayOfWeek </a>
+        </div>
+        }
+    </div>
+</div>
+}
