@@ -36,23 +36,24 @@ namespace DirectFerries.Controllers
         {
             if (ModelState.IsValid)
             {
+                var noOfDaysToBirthdayDisplayed = 14;
                 var actualNumberOfVowels =_dateOfBirthAndFullNameValidationService.NumberOfVowels(userDetails.FirstName);
                 var userAge = _dateOfBirthAndFullNameValidationService.UsersAge(userDetails.DateOfBirth);
                 var daysBeforeNextBirthday = _dateOfBirthAndFullNameValidationService.NumberOfDaysBeforeNextBirthDay(userDetails.DateOfBirth);
-                var f14DaysToBirthday = daysBeforeNextBirthday <= 14;
-                return Redirect($"~/Home/ResultsPage?firstName={userDetails.FirstName}&noOfVowels={actualNumberOfVowels}&daysBeforeNextBirthDay={daysBeforeNextBirthday}&userAge={userAge}&f14DaysToBirthday={f14DaysToBirthday}");
+                var f14DaysToBirthday = daysBeforeNextBirthday <= noOfDaysToBirthdayDisplayed;
+                return Redirect($"~/Home/ResultsPage?firstName={userDetails.FirstName}&noOfVowels={actualNumberOfVowels}&daysBeforeNextBirthDay={daysBeforeNextBirthday}&userAge={userAge}&if14DaysToBirthday={f14DaysToBirthday}");
             }
             return View(userDetails);
         }
 
         [HttpGet]
-        public ActionResult ResultsPage(string firstName, int noOfVowels, int daysBeforeNextBirthDay, int userAge, bool f14DaysToBirthday)
+        public ActionResult ResultsPage(string firstName, int noOfVowels, int daysBeforeNextBirthDay, int userAge, bool if14DaysToBirthday)
         {
             ViewBag.FirstName = firstName;
             ViewBag.NoOfVowels = noOfVowels;
             ViewBag.UserAge = userAge;
             ViewBag.NoOfDaysToNextBirthDay = daysBeforeNextBirthDay;
-            ViewBag.DateIs14DaysToBD = f14DaysToBirthday;
+            ViewBag.DateIs14DaysToBD = if14DaysToBirthday;
             return View();
         }
         public ActionResult About()
