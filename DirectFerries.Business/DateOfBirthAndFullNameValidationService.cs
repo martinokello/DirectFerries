@@ -25,10 +25,11 @@ namespace DirectFerries.Business
 
         public int UsersAge(DateTime dateOfBirth)
         {
+            var sameYearDoBNotReachedDeduction = 1;
             var currentDate = DateTime.Now;
             var age = currentDate.Year - dateOfBirth.Year;
             if (dateOfBirth.Month > currentDate.Month && dateOfBirth.Day > currentDate.Day)
-                return age - 1;
+                return age - sameYearDoBNotReachedDeduction;
             return age;
         }
 
@@ -36,7 +37,8 @@ namespace DirectFerries.Business
         {
             var currentDate = DateTime.Now;
             var daysPerYear = 365;
-            float avgDaysInMonth = (float)daysPerYear / 12;
+            var monthsInYear = 12;
+            float avgDaysInMonth = (float)daysPerYear / monthsInYear;
             var month = currentDate.Month;
             var bMonth = dateOfBirth.Month;
             if (bMonth > month)
