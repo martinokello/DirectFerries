@@ -28,7 +28,7 @@ namespace DirectFerries.Business
             var sameYearDoBNotReachedDeduction = 1;
             var currentDate = DateTime.Now;
             var age = currentDate.Year - dateOfBirth.Year;
-            if (dateOfBirth.Month > currentDate.Month && dateOfBirth.Day > currentDate.Day)
+            if (dateOfBirth.Month >= currentDate.Month && dateOfBirth.Day > currentDate.Day)
                 return age - sameYearDoBNotReachedDeduction;
             return age;
         }
