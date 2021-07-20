@@ -22,13 +22,14 @@ namespace DirectFerries.Business
             }
             return result;
         }
-
+        //amendment for datetOfBirth.Month > currentDate.Month ==> Will always be a year younger. This was the last bug.
         public int UsersAge(DateTime dateOfBirth)
         {
             var sameYearDoBNotReachedDeduction = 1;
             var currentDate = DateTime.Now;
             var age = currentDate.Year - dateOfBirth.Year;
-            if (dateOfBirth.Month >= currentDate.Month && dateOfBirth.Day > currentDate.Day)
+            if (dateOfBirth.Month >= currentDate.Month && dateOfBirth.Day > currentDate.Day ||
+                dateOfBirth.Month > currentDate.Month)
                 return age - sameYearDoBNotReachedDeduction;
             return age;
         }
