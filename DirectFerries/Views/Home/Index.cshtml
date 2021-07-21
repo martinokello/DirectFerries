@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h2>Getting started Enter your Full Name, and Date Of Birth</h2>
-        <p>
+        
             @using (Html.BeginForm())
             {
                 @Html.ValidationSummary()
@@ -34,7 +34,6 @@
                     <input type="submit" class="btn-primary col-lg-offset-2" value="Submit" />
                 </div>
             }
-        </p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
     </div>
 </div>
